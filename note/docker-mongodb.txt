@@ -1,0 +1,61 @@
+1、拉取镜像
+$ docker search mongo
+
+2、创建mongodb目录
+mkdir -p mongodb ~/mongodb/db
+
+3、运行镜像
+docker run  
+--name mongodb -p 27017:27017  
+-v $PWD/configdb:/data/configdb/ 
+-v $PWD/db/:/data/db/ 
+-d mongo --auth（表示开启账户验证）
+
+4、已admin身份进入mongo（初始没密码）
+docker exec -it  containId mongo admin
+
+5、创建一个 admin 管理员账号：
+
+$ use admin
+$ db.createUser({ user: 'admin', pwd: '123456', roles: [ { role: "root", db: "admin" } ] }); // 设置密码，权限
+
+$ use user
+$ db.createUser({user: "user", pwd: "123456", roles: [{ role: "readWrite", db: "user" }]});  // 注意有的角色权限只能适用于指定数据库，例如 admin数据库
+
+$ exit // 退出重登
+$ docker exec -it  containId mongo admin
+$ db.auth("admin","123456"); // 进入后，进行身份验证，是否有权限进行下面的操作
+
+
+6、更改账户密码
+$ db.changeUserPassword('tank2','test'); 
+
+7、安装mongo-express 同上
+
+8、运行mongo-express  （特别注意，hub上面的mongo-express 配置里面默认mongodb 容器名称是 mongo ,所以设置别名 mongodb:mongo）
+docker run -it --rm --restart=always --name mongo-express --link mongodb:mongo -d -p 8081:8081 -e ME_CONFIG_BASICAUTH_USERNAME="admin" -e ME_CONFIG_BASICAUTH_PASSWORD="123456" -e ME_CONFIG_MONGODB_ADMINUSERNAME="admin" -e ME_CONFIG_MONGODB_ADMINPASSWORD="123456" mongo-express
+
+9、mongodb 默认三个数据库， admin,local,config
+
+10、创建数据库(users)
+$ use user;
+$ db.user.insert({"name":"菜鸟教程"});
+$ show dbs;
+
+
+11、如何删除mongo容器，再创建容器，数据仍然可以保留。
+
+12、每一个数据库都有其授权用户才能访问操作，没有就创建一个
+
+13、常用命令
+show dbs # 查看数据库列表
+use yourdb # 进入数据库
+show collections # 查看当前数据库下所有集合
+db.yourcollection.distinct("url") # 得到url字段不重复的url列表
+db.yourcollection.distinct("url") # 统计url字段不重复的数据量
+db.yourcollection.remove({"key":"value"}) # 删除符合该条件的所有数据，删除后无法恢复、撤回
+db.yourcollection.drop() # 删除集合
+db.dropDatabase() # 删除数据库
+db.yourcollection.insert({"url":"http://blog.csdn.net/qq_23926575/article/category/7428558", "name":"MoonBreeze", "blog_num":30})
+db.yourcollection.update({"name":"MoonBreeze"},{"$set":{"blog_num":35}}) # 更新数据，首先查找name字段为MoonBreeze的数据，然后更改blog_num字段的值。
+#更新后的数据为{"url":"http://blog.csdn.net/qq_23926575/article/category/7428558", "name":"MoonBreeze", "blog_num":35

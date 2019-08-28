@@ -1,0 +1,367 @@
+1、如何查看docker 服务是否开启
+
+service docker status 
+
+2、启动 重启 关闭 docker
+
+systemctl start docker
+systemctl restart docker
+systemctl stop docker
+
+或
+service docker start   
+service docker restart   
+service docker stop
+
+3、守护进程重启   
+systemctl daemon-reload
+
+4、ubuntu 重新启动
+    重启命令 ： 
+    1、reboot 
+    2、shutdown -r now 立刻重启
+    3、shutdown -r 10 过10分钟自动重启
+    4、shutdown -r 20:35 在时间为20:35时候重启
+
+    如果是通过shutdown命令设置重启的话，可以用shutdown -c命令取消重启 
+
+    关机命令 ： 
+    1、halt   立刻关机（一般加-p 关闭电源）（sudo）
+    2、poweroff 立刻关机，关闭电源 (常用)
+    3、 立刻关机 （常用）
+    4、shutdown -h 10 10分钟后自动关机 
+
+    如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消关机
+
+
+5. 为该用户添加sudo权限
+
+sudo usermod -a -G adm wyx
+
+sudo usermod -a -G sudo wyx
+
+
+6、删除镜像
+docker rmi imageId
+
+7、启动、停止容器、删除容器
+docker start containerId
+docker stop containerId
+docker rm containerId
+
+
+8、如何看用户名,主机名
+命令窗口显示：用户名@主机名：例如：root@hostName  ivin@hostName
+$ hostname 或者 uname -a（查看主机名）
+
+9、修改主机名 
+vim /etc/hostname
+reboot
+
+10、修改host文件
+vim /etc/hosts
+
+11、 添加用户，添加用户组
+sudo useradd newuser -m  // -m 代表创建该用户home目录：创建用户时候，会自动创建该用户所在组，默认组名和用户名一样，使用sudo
+sudo passwd newuser      // 设置新用户密码
+
+12、新建用户没有管理权限，把新用户添加到 adm 或者sudo用户组
+usermod -G groupname username (这种会把用户从其他组中去掉，只属于该组)
+如：usermod -G git git (git只属于git组)
+
+usermod -a -G groupname username (把用户添加到这个组，之前所属组不影响)
+如：usermod -a -G www git (git属于之前git组，也属于www组)
+
+
+13、查看文件夹/文件权限
+ls -l 
+drwxr-xr-x  2 guest guest 4096 7月  10 20:40 guest
+
+详解：类型   文件拥有者使用权限  所属群组使用权限   其它用户使用权限 编号  用户   用户组
+        d       rwx                 r-x                r-x           2     guest   guest   4096 7月  10 20:40 guest
+
+13、chmod 给文件设置访问权限
+方法一：
+                  (u 文件所有者 g 当前用户组  a 所有用户)  + 增加 -取消 =取消之前的权限，并给予唯一的权限   权限           文件
+格式：sudo chmod            [ u / g / o / a ]               [ + / - / = ]                                 [ r / w / x ]  fileName
+例如：sudo chmod  a+rwx ivin/file.txt
+
+方法二：八进制法
+rwx rwx rwx
+111 111 111
+ 7    7   7
+所以 765 = rwxrw-r-x
+sudo chmod 765 file
+
+
+14、文件能不能访问跟文件设置的权限有关，跟用户无关。
+
+
+15、新建/删除一个文件夹。
+mkdir dirname
+rm -rf dirname
+
+16、新建/上次文件
+touch a.txt
+rm a.txt
+
+
+17、ubuntu 安装 nvm
+
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.2/install.sh | bash
+
+
+18、设置环境变量 把nvm 命令添加进去
+
+/etc/profile  #全局环境变量配置文件
+~/.bashrc  #当前用户环境变量配置文件
+#nvm
+export NVM_PATH=/home/ivin/.nvm
+
+source ~/.profile 或者 /.bashrc 
+
+
+19、安装node
+$ nvm install 0.12 (版本号)
+
+
+20、使用nvm 查看已安装node 
+$ nvm ls
+
+
+21、 nvm use node-version 重启失效,node 命令找不到
+设置默认node版本：nvm alias default 10.16.0
+
+
+22、pm2 进程管理工具的安装 （永不停机）
+npm install -g pm2 
+安装位置：/home/ivin/.nvm/versions/node/v10.16.0/lib/node_modules/pm2/bin/pm2；自动翻入node目录下面
+
+
+
+23、pm2 使用
+内建负载均衡（使用 Node cluster 集群模块）
+
+后台运行
+0 秒停机重载，我理解大概意思是维护升级的时候不需要停机.
+
+具有 Ubuntu 和 CentOS 的启动脚本
+停止不稳定的进程（避免无限循环）
+
+控制台检测
+提供 HTTP API
+远程控制和实时的接口 API ( Nodejs 模块,允许和 PM2 进程管理器交互 )
+
+
+
+24、pm2启动一个server项目
+
+$ pm2 start server.js
+
+25、pm2停止一个server项目
+
+$ pm2 stop appName|id
+
+26、pm2查看服务列表
+
+$ pm2 list
+
+27、监控每个 node 进程的 cpu 和内存使用情况
+$ pm2 monit
+
+
+28、pm2 查看日志
+$ pm2 logs
+
+29、pm2 start/restart/stop/delete (id/appname/all) 启动、重启、停止、删除进程服务
+
+
+30、 pm2 start server.js -i 2 开启两个实例进程，-i 2
+
+31、pm2 scale [appName/appId] 10 将某个进程扩展到10个实例
+
+32、pm2 监听重启，自动重启
+
+$ pm2 server.js --watch
+
+
+33、ubuntu 查看进程信息
+
+ps
+
+ps -aux 查看所有进程，每行一个程序
+
+top 显示当前运行程序
+
+kill 98 （98为PID号，）
+
+kill -9 98 （强制杀死98）
+
+
+33、根据端口号查pid
+sudo lsof -i 8080
+
+
+34、 进程列表用json格式输出 
+$ pm2 prettylist
+
+
+35、初始化生成pm2 配置文件（也可自行编写）
+$ pm2 init 
+
+$ pm2 start pm2.json  // pm2.json 配置文件里面定义了访问哪个应用的脚本，只需执行配置文件
+
+
+36、ubuntu重命名文件
+$ mv a b
+
+搭配使用 
+$ pm2 save  // 保存当前状态，当前运行应用,在 /home/ivin/.pm2/dump.pm2 生成dump.pm2文件
+
+
+37、给node应用传参
+传入node args
+
+直接上例子，分别是通过命令行和配置文件两种方式
+
+命令行：
+
+pm2 start app.js –node-args=”–harmony”
+
+配置文件：
+
+{ “name” : “oc-server”, “script” : “app.js”, “node_args” : “–harmony” }
+
+
+38、M2嵌入了一个简单而强大的模块系统。安装模块很简单：
+
+$ pm2 install <module_name>
+
+
+
+39、sudo 找不到pm2命令
+安装的时候只是安装到当前用户能访问的全局的path，并不是sudo能访问到的path，sudo 访问的path( /usr/local/bin/),所有设置软链接。
+由于我的node 是使用nvm安装的。所以node在nvm里面
+sudo ln -s /home/ivin/.nvm/versions/node/v10.16.0/bin/pm2 /usr/local/bin/pm2
+
+39、pm2 开机自动重启
+
+pm2 startup [ubuntu | ubuntu14 | ubuntu12 | centos | centos6 | arch | oracle | amazon | macos | darwin | freebsd | systemd | systemv | upstart | launchd | rcd | openrc]
+
+$ sudo pm2 start server.js
+$ sudo pm2 save
+$ sudo pm2 startup [platform] // [platform 有 systemd，upstart，launchd，rcd 等 (注意去掉[]) ，复制生成启动命令，控制台执行。
+$ sudo pm2 save 
+
+然而尝试了很多次，没有成功，自定义重启服务不生效，pm2 list 没有任何启动的服务
+
+
+40、鉴于上面失败，我决定手动重启，自定义shell脚本，把脚本加入自启动命令
+前提系统 ubuntu
+$vim  shell.sh
+
+$sudo mv /home/../shell.sh /etc/init.d/   添加到自启动目录
+
+$cd /etc/init.d/
+
+$ sudo chmod 755 shell.sh
+sudo update-rc.d shell.sh defaults 90  设置启动优先级
+
+sudo update-rc.d -f shell.sh remove 移除启动脚本
+
+
+任务脚本中，一般需要用到root权限，取得root权限和实际任务语句最好分开写，有些情况下写在一起不会成功。
+
+重启后通过 service servicename status 查看状态
+
+41、查看当前路径 pwd
+
+
+42、查询启动的服务
+service --status-all 所有
+
+service  servicename status 指定服务名
+或
+chkconfig --list |grep 服务名
+
+
+
+
+
+41、如何查看sudo 能访问的命令
+
+$ sudo $PATH 能够看到sudo拥有的命令文件夹。
+
+
+42、清空当前命令窗口 
+$ clear
+
+
+43、更改文件用户、用户组
+$ sudo chown ivin:ivin myshell.sh
+
+44、在当前目录下查找某个文件,支持通配符
+$ find . -name "*libc*"
+
+
+45、vim 回退上一个动作 u, 重做上一个动作ctrl+r
+
+
+46、 vim 另存为 :w fileName
+
+47、设置行号，取消行号
+
+:set nu   :set nonu
+
+48、vim 进入 视图选择模式，
+ctrl+ v 或 v
+可以选择块 进行 y 或者yy 复制，然后使用p/P粘贴（在命令行模式下
+
+
+49、 etc 放置系统设置信息，全局配置， usr 放置全局性软件应用（命令）和配置
+
+
+50、根据镜像创建容器，docker run -itd 406f227b21f5  sh  
+  sh 指的命令运行环境，例如：/bin/bash  sh, node 使用sh
+  i 表示交互使用 与t 搭配使用
+  t 表示分配一个伪终端与i搭配使用
+ 
+
+51、docker 创建一个image 
+docker build -t imageName /path/to/a/Dockerfile .
+
+52、运行镜像
+docker run -p 80:80 -v /data:/data --name containerName imageName /bin/bash  或者sh
+
+53、exit 退出容器，docker exec -it 775c7c9ee1e1 /bin/bash 或者sh 进入容器
+
+
+54、把当前容器更改变成新的镜像
+sudo docker commit eafd9111ada6 repository    (repository 就是镜像名)
+
+55、docker 中使用pm2
+CMD ["pm2-runtime", "app.js"]
+
+
+56、docker COPY ADD 都是可以复制文件夹的
+
+57、 docker run -it -v /path: /path 挂载（默认根目录，所以使用绝对路径 ）
+
+
+58、挂载的文件在docker里面删除，外部的文件也会被删除
+
+
+
+59、docker 搜选镜像
+$ docker search mongo
+$ docker pull mongo  拉取镜像
+
+60、docker 查看日志
+$ docker logs -f -t --since="2018-02-08" --tail=100 CONTAINER_ID  查看指定时间后的日志，只显示最后100行：
+
+61、docker 启动、停止所有容器
+$ docker start|stop $(docker ps -a | awk '{ print $1}' | tail -n +2)
+
+62、docker重命名镜像
+$ docker tag IMAGEID(镜像id) REPOSITORY:TAG（仓库：标签）
+  

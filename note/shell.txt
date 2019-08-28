@@ -1,0 +1,21 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          littleevil
+# Required-Start:    $local_fs $network
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: test service
+# Description:       test service daemon
+### END INIT INFO
+
+# ≤Ω÷Ë
+
+# 1. ±‡–¥Ω≈±æ
+# 2. cp mysetup.sh /etc/init.d
+# 3. sudo chmod 755 /etc/init.d/mysetup.sh
+# 4. cd /etc/init.d
+# 5. sudo update-rc.d mysetup.sh defaults 90
+
+
+# command bellow
