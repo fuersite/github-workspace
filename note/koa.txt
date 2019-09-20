@@ -1,11 +1,11 @@
-1¡¢node ÖĞÊ¹ÓÃ import ĞèÒªbabel²å¼ş
-require('babel-register')({ignore: 'node_modules'})  // °ó¶¨nodeµÄrequire,×ªÒårequireÒı½øµÄjs
-module.exports = require('./app/www/server.js') // Èë¿ÚÎÄ¼ş
+1ã€node ä¸­ä½¿ç”¨ import éœ€è¦babelæ’ä»¶
+require('babel-register')({ignore: 'node_modules'})  // ç»‘å®šnodeçš„require,è½¬ä¹‰requireå¼•è¿›çš„js
+module.exports = require('./app/www/server.js') // å…¥å£æ–‡ä»¶
 
-2¡¢koa serverÈÈ¸üĞÂ£¨nodemon£©
-"start": "nodemon app.js"  // Í¨¹ınodemon ÊØ»¤½ø³Ì£¬µ±ÎÄ¼şĞŞ¸Ä×Ô¶¯ÖØÆô·şÎñ
+2ã€koa serverçƒ­æ›´æ–°ï¼ˆnodemonï¼‰
+"start": "nodemon app.js"  // é€šè¿‡nodemon å®ˆæŠ¤è¿›ç¨‹ï¼Œå½“æ–‡ä»¶ä¿®æ”¹è‡ªåŠ¨é‡å¯æœåŠ¡
 
-3¡¢ÖĞ¼ä¼ş£ºÒ»²ã²ãÀ¹½Ø,½øÈë£¨next£©£¬Ò»²ã²ã»Øµ÷
+3ã€ä¸­é—´ä»¶ï¼šä¸€å±‚å±‚æ‹¦æˆª,è¿›å…¥ï¼ˆnextï¼‰ï¼Œä¸€å±‚å±‚å›è°ƒ
 app.use(router.routes())
 app.use(loggerMiddleware())
 app.use(( ctx, next ) => {
@@ -14,7 +14,7 @@ app.use(( ctx, next ) => {
 })
 
 
-4¡¢±àĞ´ÖĞ¼ä¼ş
+4ã€ç¼–å†™ä¸­é—´ä»¶
 // ./middleware/logger.js
 module.exports = function () {
     return function ( ctx, next ) {
@@ -29,7 +29,7 @@ const loggerMiddleware = require('./middleware/logger.js')
 app.use(loggerMiddleware())
 
 
-5¡¢Â·ÓÉ koa-router
+5ã€è·¯ç”± koa-router
 // routes/index.js
 const Router = require('koa-router');
 const router = new Router();
@@ -46,8 +46,8 @@ module.exports = router
 const router = require('./routes/index')
 
 
-5¡¢×ÓÂ·ÓÉ
-// ×ÓÂ·ÓÉ2
+5ã€å­è·¯ç”±
+// å­è·¯ç”±2
 const router = new Router();
 const page = new Router()
 page.get('/404', async ( ctx )=>{
@@ -56,46 +56,46 @@ page.get('/404', async ( ctx )=>{
   ctx.body = 'helloworld page!'
 })
 
-router.use('/page', page.routes(), page.allowedMethods())  // /page/404¡¢ /page/helloworld
+router.use('/page', page.routes(), page.allowedMethods())  // /page/404ã€ /page/helloworld
 
 
-6¡¢allowedMethods
-allowedMethods´¦ÀíµÄÒµÎñÊÇµ±ËùÓĞÂ·ÓÉÖĞ¼ä¼şÖ´ĞĞÍê³ÉÖ®ºó,Èôctx.statusÎª¿Õ»òÕß404µÄÊ±ºò,·á¸»response¶ÔÏóµÄheaderÍ·.
-¿ÉÒÔ·ÅÔÚÈ«¾Ö
+6ã€allowedMethods
+allowedMethodså¤„ç†çš„ä¸šåŠ¡æ˜¯å½“æ‰€æœ‰è·¯ç”±ä¸­é—´ä»¶æ‰§è¡Œå®Œæˆä¹‹å,è‹¥ctx.statusä¸ºç©ºæˆ–è€…404çš„æ—¶å€™,ä¸°å¯Œresponseå¯¹è±¡çš„headerå¤´.
+å¯ä»¥æ”¾åœ¨å…¨å±€
 app.use(router.routes())
 app.use(router.allowedMethods());
 
 
-7¡¢koa GETÇëÇó »ñÈ¡²ÎÊı(koa ÒÑ·â×°»ñÈ¡²ÎÊıapi)
+7ã€koa GETè¯·æ±‚ è·å–å‚æ•°(koa å·²å°è£…è·å–å‚æ•°api)
  const params = request.query
 
-8¡¢koa POSTÇëÇó koa-bodyparserÖĞ¼ä¼ş½âÎöÇëÇóÌå£¬Í¬Ê±Ò²ÄÜ½âÎöGETÇëÇó²ÎÊı
+8ã€koa POSTè¯·æ±‚ koa-bodyparserä¸­é—´ä»¶è§£æè¯·æ±‚ä½“ï¼ŒåŒæ—¶ä¹Ÿèƒ½è§£æGETè¯·æ±‚å‚æ•°
  let query= ctx.request.query
  let postData = ctx.request.body
 
-9¡¢¾²Ì¬ÎÄ¼ş´¦Àí
+9ã€é™æ€æ–‡ä»¶å¤„ç†
 const static = require('koa-static')
 const app = new Koa()
-// ¾²Ì¬×ÊÔ´Ä¿Â¼¶ÔÓÚÏà¶ÔÈë¿ÚÎÄ¼şindex.jsµÄÂ·¾¶
+// é™æ€èµ„æºç›®å½•å¯¹äºç›¸å¯¹å…¥å£æ–‡ä»¶index.jsçš„è·¯å¾„
 const staticPath = './static'
 app.use(static(
   path.join( __dirname,  staticPath)
 ))
 
 
-10¡¢cookie koa×Ô´ø²Ù×÷cookie API
+10ã€cookie koaè‡ªå¸¦æ“ä½œcookie API
 
   if ( ctx.url === '/index' ) {
     ctx.cookies.set(
       'cid', 
       'hello world',
       {
-        domain: 'localhost',  // Ğ´cookieËùÔÚµÄÓòÃû
-        path: '/index',       // Ğ´cookieËùÔÚµÄÂ·¾¶
-        maxAge: 10 * 60 * 1000, // cookieÓĞĞ§Ê±³¤
-        expires: new Date('2017-02-15'),  // cookieÊ§Ğ§Ê±¼ä
-        httpOnly: false,  // ÊÇ·ñÖ»ÓÃÓÚhttpÇëÇóÖĞ»ñÈ¡
-        overwrite: false  // ÊÇ·ñÔÊĞíÖØĞ´
+        domain: 'localhost',  // å†™cookieæ‰€åœ¨çš„åŸŸå
+        path: '/index',       // å†™cookieæ‰€åœ¨çš„è·¯å¾„
+        maxAge: 10 * 60 * 1000, // cookieæœ‰æ•ˆæ—¶é•¿
+        expires: new Date('2017-02-15'),  // cookieå¤±æ•ˆæ—¶é—´
+        httpOnly: false,  // æ˜¯å¦åªç”¨äºhttpè¯·æ±‚ä¸­è·å–
+        overwrite: false  // æ˜¯å¦å…è®¸é‡å†™
       }
     )
     ctx.body = 'cookie is ok'
@@ -103,78 +103,80 @@ app.use(static(
     ctx.body = 'hello world' 
   }
 
-11¡¢session ²Ù×÷½èÖúkoa-session-minimal
+11ã€session æ“ä½œå€ŸåŠ©koa-session-minimal
 
 
 
-// ´æ·ÅsessionIdµÄcookieÅäÖÃ £¨sessionÊÇ·Å·şÎñÆ÷ÄÚ´æµ±ÖĞµÄ£¬ËùÒÔĞèÒªÍ¨¹ıcookieÀ´½¨Á¢Á¬½Ó£©
+// å­˜æ”¾sessionIdçš„cookieé…ç½® ï¼ˆsessionæ˜¯æ”¾æœåŠ¡å™¨å†…å­˜å½“ä¸­çš„ï¼Œæ‰€ä»¥éœ€è¦é€šè¿‡cookieæ¥å»ºç«‹è¿æ¥ï¼‰
 let cookie = {
-  maxAge: '', // cookieÓĞĞ§Ê±³¤
-  expires: '',  // cookieÊ§Ğ§Ê±¼ä
-  path: '', // Ğ´cookieËùÔÚµÄÂ·¾¶
-  domain: '', // Ğ´cookieËùÔÚµÄÓòÃû
-  httpOnly: '', // ÊÇ·ñÖ»ÓÃÓÚhttpÇëÇóÖĞ»ñÈ¡
-  overwrite: '',  // ÊÇ·ñÔÊĞíÖØĞ´
+  maxAge: '', // cookieæœ‰æ•ˆæ—¶é•¿
+  expires: '',  // cookieå¤±æ•ˆæ—¶é—´
+  path: '', // å†™cookieæ‰€åœ¨çš„è·¯å¾„
+  domain: '', // å†™cookieæ‰€åœ¨çš„åŸŸå
+  httpOnly: '', // æ˜¯å¦åªç”¨äºhttpè¯·æ±‚ä¸­è·å–
+  overwrite: '',  // æ˜¯å¦å…è®¸é‡å†™
   secure: '',
   sameSite: '',
   signed: '',
 }
-// Ê¹ÓÃsessionÖĞ¼ä¼ş
+// ä½¿ç”¨sessionä¸­é—´ä»¶
 app.use(session({
   key: 'SESSION_ID',
-  store: store,// ´æÈë¹Ì»¯´æ´¢½éÖÊ£¬Ä¬ÈÏÔò´æÈëÄÚ´æµ±ÖĞ£¬·şÎñÍ£Ö¹£¬ÄÚ´æÇå³ı
-  cookie: cookie  // Ä¬ÈÏ»á°ÑsessionId ´æ·Åµ½cookieµ±ÖĞ£¬²¢ÇÒÊÇsession cookie, Í¨¹ıcookieÑ¡ÏîÖØĞÂÉèÖÃ
+  store: store,// å­˜å…¥å›ºåŒ–å­˜å‚¨ä»‹è´¨ï¼Œé»˜è®¤åˆ™å­˜å…¥å†…å­˜å½“ä¸­ï¼ŒæœåŠ¡åœæ­¢ï¼Œå†…å­˜æ¸…é™¤
+  cookie: cookie  // é»˜è®¤ä¼šæŠŠsessionId å­˜æ”¾åˆ°cookieå½“ä¸­ï¼Œå¹¶ä¸”æ˜¯session cookie, é€šè¿‡cookieé€‰é¡¹é‡æ–°è®¾ç½®
 }))
 
 
-session Ğ¡ÖªÊ¶£º
-session ÊÇ·şÎñÆ÷ÄÚ´æÖĞ´æ´¢Êı¾İÓÃµÄ£¬¿Í»§¶ËÓë·şÎñ¶Ë½¨Á¢Á¬½Ó¾Í»áÉú²úÒ»¸ösession£¬Á¬½Ó¶Ï¿ªÁ¬½Ó¾Í¶Ï¿ª£¬Ò»Ğ©ĞÅÏ¢ĞèÒªÔÚ¶Ï¿ªºóÁ¬½Ó»¹ÄÜ·ÃÎÊµ½£¬¾ÍĞèÒªcookieÀ´Ğ­Öú£¨ÉèÖÃ¹ıÆÚÊ±¼ä£¬ÀûÓÃsessionId ÖØĞÂÕÒ»Ø)
-session ÓĞcountÊôĞÔ£¬³õÊ¼Îªnull
+session å°çŸ¥è¯†ï¼š
+session æ˜¯æœåŠ¡å™¨å†…å­˜ä¸­å­˜å‚¨æ•°æ®ç”¨çš„ï¼Œå®¢æˆ·ç«¯ä¸æœåŠ¡ç«¯å»ºç«‹è¿æ¥å°±ä¼šç”Ÿäº§ä¸€ä¸ªsessionï¼Œè¿æ¥æ–­å¼€è¿æ¥å°±æ–­å¼€ï¼Œä¸€äº›ä¿¡æ¯éœ€è¦åœ¨æ–­å¼€åè¿æ¥è¿˜èƒ½è®¿é—®åˆ°ï¼Œå°±éœ€è¦cookieæ¥ååŠ©ï¼ˆè®¾ç½®è¿‡æœŸæ—¶é—´ï¼Œåˆ©ç”¨sessionId é‡æ–°æ‰¾å›)
+session æœ‰countå±æ€§ï¼Œåˆå§‹ä¸ºnull
 
 
-12¡¢ÎÄ¼şÉÏ´«Ê¹ÓÃbusboy ¶ÁÈ¡½âÎöÎÄ¼ş
-ÎÄ¼şÉÏ´«ÊÇÒì²½²Ù×÷£¬promise ·â×°ÉÏ´«²Ù×÷·½·¨£¬Ê¹ÓÃawait ¿ØÖÆÒì²½²Ù×÷
+12ã€æ–‡ä»¶ä¸Šä¼ ä½¿ç”¨busboy è¯»å–è§£ææ–‡ä»¶
+æ–‡ä»¶ä¸Šä¼ æ˜¯å¼‚æ­¥æ“ä½œï¼Œpromise å°è£…ä¸Šä¼ æ“ä½œæ–¹æ³•ï¼Œä½¿ç”¨await æ§åˆ¶å¼‚æ­¥æ“ä½œ
 
 
-13¡¢koa-jsonp Ö§³Ö¿çÓò»ñÈ¡Êı¾İ£¨jsonp¿çÓòµÄ¹Ø¼üÔÚÓÚ·µ»ØÄÚÈİ,type="text/javascript"£©
+13ã€koa-jsonp æ”¯æŒè·¨åŸŸè·å–æ•°æ®ï¼ˆjsonpè·¨åŸŸçš„å…³é”®åœ¨äºè¿”å›å†…å®¹,type="text/javascript"ï¼‰
 
 
-14¡¢²âÊÔ¿ò¼Ü
-°²×°²âÊÔÏà¹Ø¿ò¼Ü
+14ã€æµ‹è¯•æ¡†æ¶
+å®‰è£…æµ‹è¯•ç›¸å…³æ¡†æ¶
 npm install --save-dev mocha chai supertest
-mocha Ä£¿éÊÇ²âÊÔ¿ò¼Ü
-chai Ä£¿éÊÇÓÃÀ´½øĞĞ²âÊÔ½á¹û¶ÏÑÔ¿â£¬±ÈÈçÒ»¸öÅĞ¶Ï 1 + 1 ÊÇ·ñµÈÓÚ 2
-supertest Ä£¿éÊÇhttpÇëÇó²âÊÔ¿â£¬ÓÃÀ´ÇëÇóAPI½Ó¿Ú
+mocha æ¨¡å—æ˜¯æµ‹è¯•æ¡†æ¶
+chai æ¨¡å—æ˜¯ç”¨æ¥è¿›è¡Œæµ‹è¯•ç»“æœæ–­è¨€åº“ï¼Œæ¯”å¦‚ä¸€ä¸ªåˆ¤æ–­ 1 + 1 æ˜¯å¦ç­‰äº 2
+supertest æ¨¡å—æ˜¯httpè¯·æ±‚æµ‹è¯•åº“ï¼Œç”¨æ¥è¯·æ±‚APIæ¥å£
 
-Ê¹ÓÃmocha ÃüÁî £¬»áÄ¬ÈÏÖ´ĞĞµ±Ç°Ä¿Â¼ÏÂµÄtestÎÄ¼ş¼ĞÄÚ²âÊÔÎÄ¼ş
-
-
-15¡¢debugger
-
-node --inspect index.js  // debuggerµ±Ç°ÎÄ¼ş £¬¿ªÆôdebuggerÄ£Ê½£¬ä¯ÀÀÆ÷¿ØÖÆ´°¿Ú¾ÍÒªnodeµ÷ÊÔÍ¼±ê£¬µã»÷¾Í¿ÉÒÔ·ÃÎÊµ½index.jsÎÄ¼ş£¬²¢ÇÒÔÚÎÄ¼şµ±ÖĞĞŞ¸Ä£¬ÉèÖÃ¶Ïµã£¬µ÷ÊÔ
+ä½¿ç”¨mocha å‘½ä»¤ ï¼Œä¼šé»˜è®¤æ‰§è¡Œå½“å‰ç›®å½•ä¸‹çš„testæ–‡ä»¶å¤¹å†…æµ‹è¯•æ–‡ä»¶
 
 
-16¡¢Node 9ÏÂimport/exportÊ¹ÓÃ¼òµ¥ĞëÖª
+15ã€debugger
 
-²»¼ÓloaderÊ±ºò£¬Ê¹ÓÃimport/exportµÄÎÄ¼şºó×ºÃû±ØĞëÎª*.mjs£¨ÏÂÃæ»á½²ÀûÓÃLoader Hooks¼æÈİ*.jsºó×ºÎÄ¼ş£©
+node --inspect index.js  // debuggerå½“å‰æ–‡ä»¶ ï¼Œå¼€å¯debuggeræ¨¡å¼ï¼Œæµè§ˆå™¨æ§åˆ¶çª—å£å°±è¦nodeè°ƒè¯•å›¾æ ‡ï¼Œç‚¹å‡»å°±å¯ä»¥è®¿é—®åˆ°index.jsæ–‡ä»¶ï¼Œå¹¶ä¸”åœ¨æ–‡ä»¶å½“ä¸­ä¿®æ”¹ï¼Œè®¾ç½®æ–­ç‚¹ï¼Œè°ƒè¯•
 
-16¡¢×Ô¶¨Òåloader¹æÔò£¨custom-loader.mjs£©
-Æô¶¯µÄflagÒª¼ÓÔØloader¹æÔòÎÄ¼ş
-ÀıÈç£ºnode --experimental-modules --loader ./custom-loader.mjs ./index.js
 
-17¡¢Ö±½ÓÊ¹ÓÃimport from ÃüÁî
+16ã€Node 9ä¸‹import/exportä½¿ç”¨ç®€å•é¡»çŸ¥
+
+ä¸åŠ loaderæ—¶å€™ï¼Œä½¿ç”¨import/exportçš„æ–‡ä»¶åç¼€åå¿…é¡»ä¸º*.mjsï¼ˆä¸‹é¢ä¼šè®²åˆ©ç”¨Loader Hookså…¼å®¹*.jsåç¼€æ–‡ä»¶ï¼‰
+
+16ã€è‡ªå®šä¹‰loaderè§„åˆ™ï¼ˆcustom-loader.mjsï¼‰
+å¯åŠ¨çš„flagè¦åŠ è½½loaderè§„åˆ™æ–‡ä»¶
+ä¾‹å¦‚ï¼šnode --experimental-modules --loader ./custom-loader.mjs ./index.js
+
+17ã€ç›´æ¥ä½¿ç”¨import from å‘½ä»¤
 node --experimental-modules  --loader ./custom-loader.mjs ./index.js
 
 
 
-18¡¢½ÓÈëmongodb
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://admin:123456@localhost:27017/user?authSource=admin') // Á¬½Ó
-const Cat = mongoose.model('animal', { name: String }) // Éú³Édb-model¶ÔÏó£¬±íÃû»á×Ô¶¯¼ÓÉÏs ±ä³Éanimals
+18ã€æ¥å…¥mongodb
+const mongoose = require('mongoose')
 
-// ²åÈëÊı¾İ
+mongoose.connect('mongodb://admin:123456@localhost:27017/user?authSource=admin') // è¿æ¥
+
+const Cat = mongoose.model('animal', { name: String }) // ç”Ÿæˆdb-modelå¯¹è±¡ï¼Œè¡¨åä¼šè‡ªåŠ¨åŠ ä¸Šs å˜æˆanimals
+
+// æ’å…¥æ•°æ®
   if ( ctx.url === '/insertDB' ) {
-    const tydi = new Cat({ name: '¼¾Ë¹À­·ò' })
+    const tydi = new Cat({ name: 'å­£æ–¯æ‹‰å¤«' })
     const res = await tydi.save()
     ctx.body = res
     console.log(res)

@@ -9,9 +9,9 @@
 # Description:       test service daemon
 ### END INIT INFO
 
-# ²½Öè
+# æ­¥éª¤
 
-# 1. ±àÐ´½Å±¾
+# 1. ç¼–å†™è„šæœ¬
 # 2. cp mysetup.sh /etc/init.d
 # 3. sudo chmod 755 /etc/init.d/mysetup.sh
 # 4. cd /etc/init.d

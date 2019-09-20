@@ -1,367 +1,367 @@
-1¡¢ÈçºÎ²é¿´docker ·şÎñÊÇ·ñ¿ªÆô
+1ã€å¦‚ä½•æŸ¥çœ‹docker æœåŠ¡æ˜¯å¦å¼€å¯
 
 service docker status 
 
-2¡¢Æô¶¯ ÖØÆô ¹Ø±Õ docker
+2ã€å¯åŠ¨ é‡å¯ å…³é—­ docker
 
 systemctl start docker
 systemctl restart docker
 systemctl stop docker
 
-»ò
+æˆ–
 service docker start   
 service docker restart   
 service docker stop
 
-3¡¢ÊØ»¤½ø³ÌÖØÆô   
+3ã€å®ˆæŠ¤è¿›ç¨‹é‡å¯   
 systemctl daemon-reload
 
-4¡¢ubuntu ÖØĞÂÆô¶¯
-    ÖØÆôÃüÁî £º 
-    1¡¢reboot 
-    2¡¢shutdown -r now Á¢¿ÌÖØÆô
-    3¡¢shutdown -r 10 ¹ı10·ÖÖÓ×Ô¶¯ÖØÆô
-    4¡¢shutdown -r 20:35 ÔÚÊ±¼äÎª20:35Ê±ºòÖØÆô
+4ã€ubuntu é‡æ–°å¯åŠ¨
+    é‡å¯å‘½ä»¤ ï¼š 
+    1ã€reboot 
+    2ã€shutdown -r now ç«‹åˆ»é‡å¯
+    3ã€shutdown -r 10 è¿‡10åˆ†é’Ÿè‡ªåŠ¨é‡å¯
+    4ã€shutdown -r 20:35 åœ¨æ—¶é—´ä¸º20:35æ—¶å€™é‡å¯
 
-    Èç¹ûÊÇÍ¨¹ıshutdownÃüÁîÉèÖÃÖØÆôµÄ»°£¬¿ÉÒÔÓÃshutdown -cÃüÁîÈ¡ÏûÖØÆô 
+    å¦‚æœæ˜¯é€šè¿‡shutdownå‘½ä»¤è®¾ç½®é‡å¯çš„è¯ï¼Œå¯ä»¥ç”¨shutdown -cå‘½ä»¤å–æ¶ˆé‡å¯ 
 
-    ¹Ø»úÃüÁî £º 
-    1¡¢halt   Á¢¿Ì¹Ø»ú£¨Ò»°ã¼Ó-p ¹Ø±ÕµçÔ´£©£¨sudo£©
-    2¡¢poweroff Á¢¿Ì¹Ø»ú£¬¹Ø±ÕµçÔ´ (³£ÓÃ)
-    3¡¢ Á¢¿Ì¹Ø»ú £¨³£ÓÃ£©
-    4¡¢shutdown -h 10 10·ÖÖÓºó×Ô¶¯¹Ø»ú 
+    å…³æœºå‘½ä»¤ ï¼š 
+    1ã€halt   ç«‹åˆ»å…³æœºï¼ˆä¸€èˆ¬åŠ -p å…³é—­ç”µæºï¼‰ï¼ˆsudoï¼‰
+    2ã€poweroff ç«‹åˆ»å…³æœºï¼Œå…³é—­ç”µæº (å¸¸ç”¨)
+    3ã€ ç«‹åˆ»å…³æœº ï¼ˆå¸¸ç”¨ï¼‰
+    4ã€shutdown -h 10 10åˆ†é’Ÿåè‡ªåŠ¨å…³æœº 
 
-    Èç¹ûÊÇÍ¨¹ıshutdownÃüÁîÉèÖÃ¹Ø»úµÄ»°£¬¿ÉÒÔÓÃshutdown -cÃüÁîÈ¡Ïû¹Ø»ú
+    å¦‚æœæ˜¯é€šè¿‡shutdownå‘½ä»¤è®¾ç½®å…³æœºçš„è¯ï¼Œå¯ä»¥ç”¨shutdown -cå‘½ä»¤å–æ¶ˆå…³æœº
 
 
-5. Îª¸ÃÓÃ»§Ìí¼ÓsudoÈ¨ÏŞ
+5. ä¸ºè¯¥ç”¨æˆ·æ·»åŠ sudoæƒé™
 
 sudo usermod -a -G adm wyx
 
 sudo usermod -a -G sudo wyx
 
 
-6¡¢É¾³ı¾µÏñ
+6ã€åˆ é™¤é•œåƒ
 docker rmi imageId
 
-7¡¢Æô¶¯¡¢Í£Ö¹ÈİÆ÷¡¢É¾³ıÈİÆ÷
+7ã€å¯åŠ¨ã€åœæ­¢å®¹å™¨ã€åˆ é™¤å®¹å™¨
 docker start containerId
 docker stop containerId
 docker rm containerId
 
 
-8¡¢ÈçºÎ¿´ÓÃ»§Ãû,Ö÷»úÃû
-ÃüÁî´°¿ÚÏÔÊ¾£ºÓÃ»§Ãû@Ö÷»úÃû£ºÀıÈç£ºroot@hostName  ivin@hostName
-$ hostname »òÕß uname -a£¨²é¿´Ö÷»úÃû£©
+8ã€å¦‚ä½•çœ‹ç”¨æˆ·å,ä¸»æœºå
+å‘½ä»¤çª—å£æ˜¾ç¤ºï¼šç”¨æˆ·å@ä¸»æœºåï¼šä¾‹å¦‚ï¼šroot@hostName  ivin@hostName
+$ hostname æˆ–è€… uname -aï¼ˆæŸ¥çœ‹ä¸»æœºåï¼‰
 
-9¡¢ĞŞ¸ÄÖ÷»úÃû 
+9ã€ä¿®æ”¹ä¸»æœºå 
 vim /etc/hostname
 reboot
 
-10¡¢ĞŞ¸ÄhostÎÄ¼ş
+10ã€ä¿®æ”¹hostæ–‡ä»¶
 vim /etc/hosts
 
-11¡¢ Ìí¼ÓÓÃ»§£¬Ìí¼ÓÓÃ»§×é
-sudo useradd newuser -m  // -m ´ú±í´´½¨¸ÃÓÃ»§homeÄ¿Â¼£º´´½¨ÓÃ»§Ê±ºò£¬»á×Ô¶¯´´½¨¸ÃÓÃ»§ËùÔÚ×é£¬Ä¬ÈÏ×éÃûºÍÓÃ»§ÃûÒ»Ñù£¬Ê¹ÓÃsudo
-sudo passwd newuser      // ÉèÖÃĞÂÓÃ»§ÃÜÂë
+11ã€ æ·»åŠ ç”¨æˆ·ï¼Œæ·»åŠ ç”¨æˆ·ç»„
+sudo useradd newuser -m  // -m ä»£è¡¨åˆ›å»ºè¯¥ç”¨æˆ·homeç›®å½•ï¼šåˆ›å»ºç”¨æˆ·æ—¶å€™ï¼Œä¼šè‡ªåŠ¨åˆ›å»ºè¯¥ç”¨æˆ·æ‰€åœ¨ç»„ï¼Œé»˜è®¤ç»„åå’Œç”¨æˆ·åä¸€æ ·ï¼Œä½¿ç”¨sudo
+sudo passwd newuser      // è®¾ç½®æ–°ç”¨æˆ·å¯†ç 
 
-12¡¢ĞÂ½¨ÓÃ»§Ã»ÓĞ¹ÜÀíÈ¨ÏŞ£¬°ÑĞÂÓÃ»§Ìí¼Óµ½ adm »òÕßsudoÓÃ»§×é
-usermod -G groupname username (ÕâÖÖ»á°ÑÓÃ»§´ÓÆäËû×éÖĞÈ¥µô£¬Ö»ÊôÓÚ¸Ã×é)
-Èç£ºusermod -G git git (gitÖ»ÊôÓÚgit×é)
+12ã€æ–°å»ºç”¨æˆ·æ²¡æœ‰ç®¡ç†æƒé™ï¼ŒæŠŠæ–°ç”¨æˆ·æ·»åŠ åˆ° adm æˆ–è€…sudoç”¨æˆ·ç»„
+usermod -G groupname username (è¿™ç§ä¼šæŠŠç”¨æˆ·ä»å…¶ä»–ç»„ä¸­å»æ‰ï¼Œåªå±äºè¯¥ç»„)
+å¦‚ï¼šusermod -G git git (gitåªå±äºgitç»„)
 
-usermod -a -G groupname username (°ÑÓÃ»§Ìí¼Óµ½Õâ¸ö×é£¬Ö®Ç°ËùÊô×é²»Ó°Ïì)
-Èç£ºusermod -a -G www git (gitÊôÓÚÖ®Ç°git×é£¬Ò²ÊôÓÚwww×é)
+usermod -a -G groupname username (æŠŠç”¨æˆ·æ·»åŠ åˆ°è¿™ä¸ªç»„ï¼Œä¹‹å‰æ‰€å±ç»„ä¸å½±å“)
+å¦‚ï¼šusermod -a -G www git (gitå±äºä¹‹å‰gitç»„ï¼Œä¹Ÿå±äºwwwç»„)
 
 
-13¡¢²é¿´ÎÄ¼ş¼Ğ/ÎÄ¼şÈ¨ÏŞ
+13ã€æŸ¥çœ‹æ–‡ä»¶å¤¹/æ–‡ä»¶æƒé™
 ls -l 
-drwxr-xr-x  2 guest guest 4096 7ÔÂ  10 20:40 guest
+drwxr-xr-x  2 guest guest 4096 7æœˆ  10 20:40 guest
 
-Ïê½â£ºÀàĞÍ   ÎÄ¼şÓµÓĞÕßÊ¹ÓÃÈ¨ÏŞ  ËùÊôÈº×éÊ¹ÓÃÈ¨ÏŞ   ÆäËüÓÃ»§Ê¹ÓÃÈ¨ÏŞ ±àºÅ  ÓÃ»§   ÓÃ»§×é
-        d       rwx                 r-x                r-x           2     guest   guest   4096 7ÔÂ  10 20:40 guest
+è¯¦è§£ï¼šç±»å‹   æ–‡ä»¶æ‹¥æœ‰è€…ä½¿ç”¨æƒé™  æ‰€å±ç¾¤ç»„ä½¿ç”¨æƒé™   å…¶å®ƒç”¨æˆ·ä½¿ç”¨æƒé™ ç¼–å·  ç”¨æˆ·   ç”¨æˆ·ç»„
+        d       rwx                 r-x                r-x           2     guest   guest   4096 7æœˆ  10 20:40 guest
 
-13¡¢chmod ¸øÎÄ¼şÉèÖÃ·ÃÎÊÈ¨ÏŞ
-·½·¨Ò»£º
-                  (u ÎÄ¼şËùÓĞÕß g µ±Ç°ÓÃ»§×é  a ËùÓĞÓÃ»§)  + Ôö¼Ó -È¡Ïû =È¡ÏûÖ®Ç°µÄÈ¨ÏŞ£¬²¢¸øÓèÎ¨Ò»µÄÈ¨ÏŞ   È¨ÏŞ           ÎÄ¼ş
-¸ñÊ½£ºsudo chmod            [ u / g / o / a ]               [ + / - / = ]                                 [ r / w / x ]  fileName
-ÀıÈç£ºsudo chmod  a+rwx ivin/file.txt
+13ã€chmod ç»™æ–‡ä»¶è®¾ç½®è®¿é—®æƒé™
+æ–¹æ³•ä¸€ï¼š
+                  (u æ–‡ä»¶æ‰€æœ‰è€… g å½“å‰ç”¨æˆ·ç»„  a æ‰€æœ‰ç”¨æˆ·)  + å¢åŠ  -å–æ¶ˆ =å–æ¶ˆä¹‹å‰çš„æƒé™ï¼Œå¹¶ç»™äºˆå”¯ä¸€çš„æƒé™   æƒé™           æ–‡ä»¶
+æ ¼å¼ï¼šsudo chmod            [ u / g / o / a ]               [ + / - / = ]                                 [ r / w / x ]  fileName
+ä¾‹å¦‚ï¼šsudo chmod  a+rwx ivin/file.txt
 
-·½·¨¶ş£º°Ë½øÖÆ·¨
+æ–¹æ³•äºŒï¼šå…«è¿›åˆ¶æ³•
 rwx rwx rwx
 111 111 111
  7    7   7
-ËùÒÔ 765 = rwxrw-r-x
+æ‰€ä»¥ 765 = rwxrw-r-x
 sudo chmod 765 file
 
 
-14¡¢ÎÄ¼şÄÜ²»ÄÜ·ÃÎÊ¸úÎÄ¼şÉèÖÃµÄÈ¨ÏŞÓĞ¹Ø£¬¸úÓÃ»§ÎŞ¹Ø¡£
+14ã€æ–‡ä»¶èƒ½ä¸èƒ½è®¿é—®è·Ÿæ–‡ä»¶è®¾ç½®çš„æƒé™æœ‰å…³ï¼Œè·Ÿç”¨æˆ·æ— å…³ã€‚
 
 
-15¡¢ĞÂ½¨/É¾³ıÒ»¸öÎÄ¼ş¼Ğ¡£
+15ã€æ–°å»º/åˆ é™¤ä¸€ä¸ªæ–‡ä»¶å¤¹ã€‚
 mkdir dirname
 rm -rf dirname
 
-16¡¢ĞÂ½¨/ÉÏ´ÎÎÄ¼ş
+16ã€æ–°å»º/ä¸Šæ¬¡æ–‡ä»¶
 touch a.txt
 rm a.txt
 
 
-17¡¢ubuntu °²×° nvm
+17ã€ubuntu å®‰è£… nvm
 
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.2/install.sh | bash
 
 
-18¡¢ÉèÖÃ»·¾³±äÁ¿ °Ñnvm ÃüÁîÌí¼Ó½øÈ¥
+18ã€è®¾ç½®ç¯å¢ƒå˜é‡ æŠŠnvm å‘½ä»¤æ·»åŠ è¿›å»
 
-/etc/profile  #È«¾Ö»·¾³±äÁ¿ÅäÖÃÎÄ¼ş
-~/.bashrc  #µ±Ç°ÓÃ»§»·¾³±äÁ¿ÅäÖÃÎÄ¼ş
+/etc/profile  #å…¨å±€ç¯å¢ƒå˜é‡é…ç½®æ–‡ä»¶
+~/.bashrc  #å½“å‰ç”¨æˆ·ç¯å¢ƒå˜é‡é…ç½®æ–‡ä»¶
 #nvm
 export NVM_PATH=/home/ivin/.nvm
 
-source ~/.profile »òÕß /.bashrc 
+source ~/.profile æˆ–è€… /.bashrc 
 
 
-19¡¢°²×°node
-$ nvm install 0.12 (°æ±¾ºÅ)
+19ã€å®‰è£…node
+$ nvm install 0.12 (ç‰ˆæœ¬å·)
 
 
-20¡¢Ê¹ÓÃnvm ²é¿´ÒÑ°²×°node 
+20ã€ä½¿ç”¨nvm æŸ¥çœ‹å·²å®‰è£…node 
 $ nvm ls
 
 
-21¡¢ nvm use node-version ÖØÆôÊ§Ğ§,node ÃüÁîÕÒ²»µ½
-ÉèÖÃÄ¬ÈÏnode°æ±¾£ºnvm alias default 10.16.0
+21ã€ nvm use node-version é‡å¯å¤±æ•ˆ,node å‘½ä»¤æ‰¾ä¸åˆ°
+è®¾ç½®é»˜è®¤nodeç‰ˆæœ¬ï¼šnvm alias default 10.16.0
 
 
-22¡¢pm2 ½ø³Ì¹ÜÀí¹¤¾ßµÄ°²×° £¨ÓÀ²»Í£»ú£©
+22ã€pm2 è¿›ç¨‹ç®¡ç†å·¥å…·çš„å®‰è£… ï¼ˆæ°¸ä¸åœæœºï¼‰
 npm install -g pm2 
-°²×°Î»ÖÃ£º/home/ivin/.nvm/versions/node/v10.16.0/lib/node_modules/pm2/bin/pm2£»×Ô¶¯·­ÈënodeÄ¿Â¼ÏÂÃæ
+å®‰è£…ä½ç½®ï¼š/home/ivin/.nvm/versions/node/v10.16.0/lib/node_modules/pm2/bin/pm2ï¼›è‡ªåŠ¨ç¿»å…¥nodeç›®å½•ä¸‹é¢
 
 
 
-23¡¢pm2 Ê¹ÓÃ
-ÄÚ½¨¸ºÔØ¾ùºâ£¨Ê¹ÓÃ Node cluster ¼¯ÈºÄ£¿é£©
+23ã€pm2 ä½¿ç”¨
+å†…å»ºè´Ÿè½½å‡è¡¡ï¼ˆä½¿ç”¨ Node cluster é›†ç¾¤æ¨¡å—ï¼‰
 
-ºóÌ¨ÔËĞĞ
-0 ÃëÍ£»úÖØÔØ£¬ÎÒÀí½â´ó¸ÅÒâË¼ÊÇÎ¬»¤Éı¼¶µÄÊ±ºò²»ĞèÒªÍ£»ú.
+åå°è¿è¡Œ
+0 ç§’åœæœºé‡è½½ï¼Œæˆ‘ç†è§£å¤§æ¦‚æ„æ€æ˜¯ç»´æŠ¤å‡çº§çš„æ—¶å€™ä¸éœ€è¦åœæœº.
 
-¾ßÓĞ Ubuntu ºÍ CentOS µÄÆô¶¯½Å±¾
-Í£Ö¹²»ÎÈ¶¨µÄ½ø³Ì£¨±ÜÃâÎŞÏŞÑ­»·£©
+å…·æœ‰ Ubuntu å’Œ CentOS çš„å¯åŠ¨è„šæœ¬
+åœæ­¢ä¸ç¨³å®šçš„è¿›ç¨‹ï¼ˆé¿å…æ— é™å¾ªç¯ï¼‰
 
-¿ØÖÆÌ¨¼ì²â
-Ìá¹© HTTP API
-Ô¶³Ì¿ØÖÆºÍÊµÊ±µÄ½Ó¿Ú API ( Nodejs Ä£¿é,ÔÊĞíºÍ PM2 ½ø³Ì¹ÜÀíÆ÷½»»¥ )
+æ§åˆ¶å°æ£€æµ‹
+æä¾› HTTP API
+è¿œç¨‹æ§åˆ¶å’Œå®æ—¶çš„æ¥å£ API ( Nodejs æ¨¡å—,å…è®¸å’Œ PM2 è¿›ç¨‹ç®¡ç†å™¨äº¤äº’ )
 
 
 
-24¡¢pm2Æô¶¯Ò»¸öserverÏîÄ¿
+24ã€pm2å¯åŠ¨ä¸€ä¸ªserveré¡¹ç›®
 
 $ pm2 start server.js
 
-25¡¢pm2Í£Ö¹Ò»¸öserverÏîÄ¿
+25ã€pm2åœæ­¢ä¸€ä¸ªserveré¡¹ç›®
 
 $ pm2 stop appName|id
 
-26¡¢pm2²é¿´·şÎñÁĞ±í
+26ã€pm2æŸ¥çœ‹æœåŠ¡åˆ—è¡¨
 
 $ pm2 list
 
-27¡¢¼à¿ØÃ¿¸ö node ½ø³ÌµÄ cpu ºÍÄÚ´æÊ¹ÓÃÇé¿ö
+27ã€ç›‘æ§æ¯ä¸ª node è¿›ç¨‹çš„ cpu å’Œå†…å­˜ä½¿ç”¨æƒ…å†µ
 $ pm2 monit
 
 
-28¡¢pm2 ²é¿´ÈÕÖ¾
+28ã€pm2 æŸ¥çœ‹æ—¥å¿—
 $ pm2 logs
 
-29¡¢pm2 start/restart/stop/delete (id/appname/all) Æô¶¯¡¢ÖØÆô¡¢Í£Ö¹¡¢É¾³ı½ø³Ì·şÎñ
+29ã€pm2 start/restart/stop/delete (id/appname/all) å¯åŠ¨ã€é‡å¯ã€åœæ­¢ã€åˆ é™¤è¿›ç¨‹æœåŠ¡
 
 
-30¡¢ pm2 start server.js -i 2 ¿ªÆôÁ½¸öÊµÀı½ø³Ì£¬-i 2
+30ã€ pm2 start server.js -i 2 å¼€å¯ä¸¤ä¸ªå®ä¾‹è¿›ç¨‹ï¼Œ-i 2
 
-31¡¢pm2 scale [appName/appId] 10 ½«Ä³¸ö½ø³ÌÀ©Õ¹µ½10¸öÊµÀı
+31ã€pm2 scale [appName/appId] 10 å°†æŸä¸ªè¿›ç¨‹æ‰©å±•åˆ°10ä¸ªå®ä¾‹
 
-32¡¢pm2 ¼àÌıÖØÆô£¬×Ô¶¯ÖØÆô
+32ã€pm2 ç›‘å¬é‡å¯ï¼Œè‡ªåŠ¨é‡å¯
 
 $ pm2 server.js --watch
 
 
-33¡¢ubuntu ²é¿´½ø³ÌĞÅÏ¢
+33ã€ubuntu æŸ¥çœ‹è¿›ç¨‹ä¿¡æ¯
 
 ps
 
-ps -aux ²é¿´ËùÓĞ½ø³Ì£¬Ã¿ĞĞÒ»¸ö³ÌĞò
+ps -aux æŸ¥çœ‹æ‰€æœ‰è¿›ç¨‹ï¼Œæ¯è¡Œä¸€ä¸ªç¨‹åº
 
-top ÏÔÊ¾µ±Ç°ÔËĞĞ³ÌĞò
+top æ˜¾ç¤ºå½“å‰è¿è¡Œç¨‹åº
 
-kill 98 £¨98ÎªPIDºÅ£¬£©
+kill 98 ï¼ˆ98ä¸ºPIDå·ï¼Œï¼‰
 
-kill -9 98 £¨Ç¿ÖÆÉ±ËÀ98£©
+kill -9 98 ï¼ˆå¼ºåˆ¶æ€æ­»98ï¼‰
 
 
-33¡¢¸ù¾İ¶Ë¿ÚºÅ²épid
+33ã€æ ¹æ®ç«¯å£å·æŸ¥pid
 sudo lsof -i 8080
 
 
-34¡¢ ½ø³ÌÁĞ±íÓÃjson¸ñÊ½Êä³ö 
+34ã€ è¿›ç¨‹åˆ—è¡¨ç”¨jsonæ ¼å¼è¾“å‡º 
 $ pm2 prettylist
 
 
-35¡¢³õÊ¼»¯Éú³Épm2 ÅäÖÃÎÄ¼ş£¨Ò²¿É×ÔĞĞ±àĞ´£©
+35ã€åˆå§‹åŒ–ç”Ÿæˆpm2 é…ç½®æ–‡ä»¶ï¼ˆä¹Ÿå¯è‡ªè¡Œç¼–å†™ï¼‰
 $ pm2 init 
 
-$ pm2 start pm2.json  // pm2.json ÅäÖÃÎÄ¼şÀïÃæ¶¨ÒåÁË·ÃÎÊÄÄ¸öÓ¦ÓÃµÄ½Å±¾£¬Ö»ĞèÖ´ĞĞÅäÖÃÎÄ¼ş
+$ pm2 start pm2.json  // pm2.json é…ç½®æ–‡ä»¶é‡Œé¢å®šä¹‰äº†è®¿é—®å“ªä¸ªåº”ç”¨çš„è„šæœ¬ï¼Œåªéœ€æ‰§è¡Œé…ç½®æ–‡ä»¶
 
 
-36¡¢ubuntuÖØÃüÃûÎÄ¼ş
+36ã€ubuntué‡å‘½åæ–‡ä»¶
 $ mv a b
 
-´îÅäÊ¹ÓÃ 
-$ pm2 save  // ±£´æµ±Ç°×´Ì¬£¬µ±Ç°ÔËĞĞÓ¦ÓÃ,ÔÚ /home/ivin/.pm2/dump.pm2 Éú³Édump.pm2ÎÄ¼ş
+æ­é…ä½¿ç”¨ 
+$ pm2 save  // ä¿å­˜å½“å‰çŠ¶æ€ï¼Œå½“å‰è¿è¡Œåº”ç”¨,åœ¨ /home/ivin/.pm2/dump.pm2 ç”Ÿæˆdump.pm2æ–‡ä»¶
 
 
-37¡¢¸ønodeÓ¦ÓÃ´«²Î
-´«Èënode args
+37ã€ç»™nodeåº”ç”¨ä¼ å‚
+ä¼ å…¥node args
 
-Ö±½ÓÉÏÀı×Ó£¬·Ö±ğÊÇÍ¨¹ıÃüÁîĞĞºÍÅäÖÃÎÄ¼şÁ½ÖÖ·½Ê½
+ç›´æ¥ä¸Šä¾‹å­ï¼Œåˆ†åˆ«æ˜¯é€šè¿‡å‘½ä»¤è¡Œå’Œé…ç½®æ–‡ä»¶ä¸¤ç§æ–¹å¼
 
-ÃüÁîĞĞ£º
+å‘½ä»¤è¡Œï¼š
 
-pm2 start app.js ¨Cnode-args=¡±¨Charmony¡±
+pm2 start app.js â€“node-args=â€â€“harmonyâ€
 
-ÅäÖÃÎÄ¼ş£º
+é…ç½®æ–‡ä»¶ï¼š
 
-{ ¡°name¡± : ¡°oc-server¡±, ¡°script¡± : ¡°app.js¡±, ¡°node_args¡± : ¡°¨Charmony¡± }
+{ â€œnameâ€ : â€œoc-serverâ€, â€œscriptâ€ : â€œapp.jsâ€, â€œnode_argsâ€ : â€œâ€“harmonyâ€ }
 
 
-38¡¢M2Ç¶ÈëÁËÒ»¸ö¼òµ¥¶øÇ¿´óµÄÄ£¿éÏµÍ³¡£°²×°Ä£¿éºÜ¼òµ¥£º
+38ã€M2åµŒå…¥äº†ä¸€ä¸ªç®€å•è€Œå¼ºå¤§çš„æ¨¡å—ç³»ç»Ÿã€‚å®‰è£…æ¨¡å—å¾ˆç®€å•ï¼š
 
 $ pm2 install <module_name>
 
 
 
-39¡¢sudo ÕÒ²»µ½pm2ÃüÁî
-°²×°µÄÊ±ºòÖ»ÊÇ°²×°µ½µ±Ç°ÓÃ»§ÄÜ·ÃÎÊµÄÈ«¾ÖµÄpath£¬²¢²»ÊÇsudoÄÜ·ÃÎÊµ½µÄpath£¬sudo ·ÃÎÊµÄpath( /usr/local/bin/),ËùÓĞÉèÖÃÈíÁ´½Ó¡£
-ÓÉÓÚÎÒµÄnode ÊÇÊ¹ÓÃnvm°²×°µÄ¡£ËùÒÔnodeÔÚnvmÀïÃæ
+39ã€sudo æ‰¾ä¸åˆ°pm2å‘½ä»¤
+å®‰è£…çš„æ—¶å€™åªæ˜¯å®‰è£…åˆ°å½“å‰ç”¨æˆ·èƒ½è®¿é—®çš„å…¨å±€çš„pathï¼Œå¹¶ä¸æ˜¯sudoèƒ½è®¿é—®åˆ°çš„pathï¼Œsudo è®¿é—®çš„path( /usr/local/bin/),æ‰€æœ‰è®¾ç½®è½¯é“¾æ¥ã€‚
+ç”±äºæˆ‘çš„node æ˜¯ä½¿ç”¨nvmå®‰è£…çš„ã€‚æ‰€ä»¥nodeåœ¨nvmé‡Œé¢
 sudo ln -s /home/ivin/.nvm/versions/node/v10.16.0/bin/pm2 /usr/local/bin/pm2
 
-39¡¢pm2 ¿ª»ú×Ô¶¯ÖØÆô
+39ã€pm2 å¼€æœºè‡ªåŠ¨é‡å¯
 
 pm2 startup [ubuntu | ubuntu14 | ubuntu12 | centos | centos6 | arch | oracle | amazon | macos | darwin | freebsd | systemd | systemv | upstart | launchd | rcd | openrc]
 
 $ sudo pm2 start server.js
 $ sudo pm2 save
-$ sudo pm2 startup [platform] // [platform ÓĞ systemd£¬upstart£¬launchd£¬rcd µÈ (×¢ÒâÈ¥µô[]) £¬¸´ÖÆÉú³ÉÆô¶¯ÃüÁî£¬¿ØÖÆÌ¨Ö´ĞĞ¡£
+$ sudo pm2 startup [platform] // [platform æœ‰ systemdï¼Œupstartï¼Œlaunchdï¼Œrcd ç­‰ (æ³¨æ„å»æ‰[]) ï¼Œå¤åˆ¶ç”Ÿæˆå¯åŠ¨å‘½ä»¤ï¼Œæ§åˆ¶å°æ‰§è¡Œã€‚
 $ sudo pm2 save 
 
-È»¶ø³¢ÊÔÁËºÜ¶à´Î£¬Ã»ÓĞ³É¹¦£¬×Ô¶¨ÒåÖØÆô·şÎñ²»ÉúĞ§£¬pm2 list Ã»ÓĞÈÎºÎÆô¶¯µÄ·şÎñ
+ç„¶è€Œå°è¯•äº†å¾ˆå¤šæ¬¡ï¼Œæ²¡æœ‰æˆåŠŸï¼Œè‡ªå®šä¹‰é‡å¯æœåŠ¡ä¸ç”Ÿæ•ˆï¼Œpm2 list æ²¡æœ‰ä»»ä½•å¯åŠ¨çš„æœåŠ¡
 
 
-40¡¢¼øÓÚÉÏÃæÊ§°Ü£¬ÎÒ¾ö¶¨ÊÖ¶¯ÖØÆô£¬×Ô¶¨Òåshell½Å±¾£¬°Ñ½Å±¾¼ÓÈë×ÔÆô¶¯ÃüÁî
-Ç°ÌáÏµÍ³ ubuntu
+40ã€é‰´äºä¸Šé¢å¤±è´¥ï¼Œæˆ‘å†³å®šæ‰‹åŠ¨é‡å¯ï¼Œè‡ªå®šä¹‰shellè„šæœ¬ï¼ŒæŠŠè„šæœ¬åŠ å…¥è‡ªå¯åŠ¨å‘½ä»¤
+å‰æç³»ç»Ÿ ubuntu
 $vim  shell.sh
 
-$sudo mv /home/../shell.sh /etc/init.d/   Ìí¼Óµ½×ÔÆô¶¯Ä¿Â¼
+$sudo mv /home/../shell.sh /etc/init.d/   æ·»åŠ åˆ°è‡ªå¯åŠ¨ç›®å½•
 
 $cd /etc/init.d/
 
 $ sudo chmod 755 shell.sh
-sudo update-rc.d shell.sh defaults 90  ÉèÖÃÆô¶¯ÓÅÏÈ¼¶
+sudo update-rc.d shell.sh defaults 90  è®¾ç½®å¯åŠ¨ä¼˜å…ˆçº§
 
-sudo update-rc.d -f shell.sh remove ÒÆ³ıÆô¶¯½Å±¾
-
-
-ÈÎÎñ½Å±¾ÖĞ£¬Ò»°ãĞèÒªÓÃµ½rootÈ¨ÏŞ£¬È¡µÃrootÈ¨ÏŞºÍÊµ¼ÊÈÎÎñÓï¾ä×îºÃ·Ö¿ªĞ´£¬ÓĞĞ©Çé¿öÏÂĞ´ÔÚÒ»Æğ²»»á³É¹¦¡£
-
-ÖØÆôºóÍ¨¹ı service servicename status ²é¿´×´Ì¬
-
-41¡¢²é¿´µ±Ç°Â·¾¶ pwd
+sudo update-rc.d -f shell.sh remove ç§»é™¤å¯åŠ¨è„šæœ¬
 
 
-42¡¢²éÑ¯Æô¶¯µÄ·şÎñ
-service --status-all ËùÓĞ
+ä»»åŠ¡è„šæœ¬ä¸­ï¼Œä¸€èˆ¬éœ€è¦ç”¨åˆ°rootæƒé™ï¼Œå–å¾—rootæƒé™å’Œå®é™…ä»»åŠ¡è¯­å¥æœ€å¥½åˆ†å¼€å†™ï¼Œæœ‰äº›æƒ…å†µä¸‹å†™åœ¨ä¸€èµ·ä¸ä¼šæˆåŠŸã€‚
 
-service  servicename status Ö¸¶¨·şÎñÃû
-»ò
-chkconfig --list |grep ·şÎñÃû
+é‡å¯åé€šè¿‡ service servicename status æŸ¥çœ‹çŠ¶æ€
+
+41ã€æŸ¥çœ‹å½“å‰è·¯å¾„ pwd
 
 
+42ã€æŸ¥è¯¢å¯åŠ¨çš„æœåŠ¡
+service --status-all æ‰€æœ‰
+
+service  servicename status æŒ‡å®šæœåŠ¡å
+æˆ–
+chkconfig --list |grep æœåŠ¡å
 
 
 
-41¡¢ÈçºÎ²é¿´sudo ÄÜ·ÃÎÊµÄÃüÁî
-
-$ sudo $PATH ÄÜ¹»¿´µ½sudoÓµÓĞµÄÃüÁîÎÄ¼ş¼Ğ¡£
 
 
-42¡¢Çå¿Õµ±Ç°ÃüÁî´°¿Ú 
+41ã€å¦‚ä½•æŸ¥çœ‹sudo èƒ½è®¿é—®çš„å‘½ä»¤
+
+$ sudo $PATH èƒ½å¤Ÿçœ‹åˆ°sudoæ‹¥æœ‰çš„å‘½ä»¤æ–‡ä»¶å¤¹ã€‚
+
+
+42ã€æ¸…ç©ºå½“å‰å‘½ä»¤çª—å£ 
 $ clear
 
 
-43¡¢¸ü¸ÄÎÄ¼şÓÃ»§¡¢ÓÃ»§×é
+43ã€æ›´æ”¹æ–‡ä»¶ç”¨æˆ·ã€ç”¨æˆ·ç»„
 $ sudo chown ivin:ivin myshell.sh
 
-44¡¢ÔÚµ±Ç°Ä¿Â¼ÏÂ²éÕÒÄ³¸öÎÄ¼ş,Ö§³ÖÍ¨Åä·û
+44ã€åœ¨å½“å‰ç›®å½•ä¸‹æŸ¥æ‰¾æŸä¸ªæ–‡ä»¶,æ”¯æŒé€šé…ç¬¦
 $ find . -name "*libc*"
 
 
-45¡¢vim »ØÍËÉÏÒ»¸ö¶¯×÷ u, ÖØ×öÉÏÒ»¸ö¶¯×÷ctrl+r
+45ã€vim å›é€€ä¸Šä¸€ä¸ªåŠ¨ä½œ u, é‡åšä¸Šä¸€ä¸ªåŠ¨ä½œctrl+r
 
 
-46¡¢ vim Áí´æÎª :w fileName
+46ã€ vim å¦å­˜ä¸º :w fileName
 
-47¡¢ÉèÖÃĞĞºÅ£¬È¡ÏûĞĞºÅ
+47ã€è®¾ç½®è¡Œå·ï¼Œå–æ¶ˆè¡Œå·
 
 :set nu   :set nonu
 
-48¡¢vim ½øÈë ÊÓÍ¼Ñ¡ÔñÄ£Ê½£¬
-ctrl+ v »ò v
-¿ÉÒÔÑ¡Ôñ¿é ½øĞĞ y »òÕßyy ¸´ÖÆ£¬È»ºóÊ¹ÓÃp/PÕ³Ìù£¨ÔÚÃüÁîĞĞÄ£Ê½ÏÂ
+48ã€vim è¿›å…¥ è§†å›¾é€‰æ‹©æ¨¡å¼ï¼Œ
+ctrl+ v æˆ– v
+å¯ä»¥é€‰æ‹©å— è¿›è¡Œ y æˆ–è€…yy å¤åˆ¶ï¼Œç„¶åä½¿ç”¨p/Pç²˜è´´ï¼ˆåœ¨å‘½ä»¤è¡Œæ¨¡å¼ä¸‹
 
 
-49¡¢ etc ·ÅÖÃÏµÍ³ÉèÖÃĞÅÏ¢£¬È«¾ÖÅäÖÃ£¬ usr ·ÅÖÃÈ«¾ÖĞÔÈí¼şÓ¦ÓÃ£¨ÃüÁî£©ºÍÅäÖÃ
+49ã€ etc æ”¾ç½®ç³»ç»Ÿè®¾ç½®ä¿¡æ¯ï¼Œå…¨å±€é…ç½®ï¼Œ usr æ”¾ç½®å…¨å±€æ€§è½¯ä»¶åº”ç”¨ï¼ˆå‘½ä»¤ï¼‰å’Œé…ç½®
 
 
-50¡¢¸ù¾İ¾µÏñ´´½¨ÈİÆ÷£¬docker run -itd 406f227b21f5  sh  
-  sh Ö¸µÄÃüÁîÔËĞĞ»·¾³£¬ÀıÈç£º/bin/bash  sh, node Ê¹ÓÃsh
-  i ±íÊ¾½»»¥Ê¹ÓÃ Óët ´îÅäÊ¹ÓÃ
-  t ±íÊ¾·ÖÅäÒ»¸öÎ±ÖÕ¶ËÓëi´îÅäÊ¹ÓÃ
+50ã€æ ¹æ®é•œåƒåˆ›å»ºå®¹å™¨ï¼Œdocker run -itd 406f227b21f5  sh  
+  sh æŒ‡çš„å‘½ä»¤è¿è¡Œç¯å¢ƒï¼Œä¾‹å¦‚ï¼š/bin/bash  sh, node ä½¿ç”¨sh
+  i è¡¨ç¤ºäº¤äº’ä½¿ç”¨ ä¸t æ­é…ä½¿ç”¨
+  t è¡¨ç¤ºåˆ†é…ä¸€ä¸ªä¼ªç»ˆç«¯ä¸iæ­é…ä½¿ç”¨
  
 
-51¡¢docker ´´½¨Ò»¸öimage 
+51ã€docker åˆ›å»ºä¸€ä¸ªimage 
 docker build -t imageName /path/to/a/Dockerfile .
 
-52¡¢ÔËĞĞ¾µÏñ
-docker run -p 80:80 -v /data:/data --name containerName imageName /bin/bash  »òÕßsh
+52ã€è¿è¡Œé•œåƒ
+docker run -p 80:80 -v /data:/data --name containerName imageName /bin/bash  æˆ–è€…sh
 
-53¡¢exit ÍË³öÈİÆ÷£¬docker exec -it 775c7c9ee1e1 /bin/bash »òÕßsh ½øÈëÈİÆ÷
+53ã€exit é€€å‡ºå®¹å™¨ï¼Œdocker exec -it 775c7c9ee1e1 /bin/bash æˆ–è€…sh è¿›å…¥å®¹å™¨
 
 
-54¡¢°Ñµ±Ç°ÈİÆ÷¸ü¸Ä±ä³ÉĞÂµÄ¾µÏñ
-sudo docker commit eafd9111ada6 repository    (repository ¾ÍÊÇ¾µÏñÃû)
+54ã€æŠŠå½“å‰å®¹å™¨æ›´æ”¹å˜æˆæ–°çš„é•œåƒ
+sudo docker commit eafd9111ada6 repository    (repository å°±æ˜¯é•œåƒå)
 
-55¡¢docker ÖĞÊ¹ÓÃpm2
+55ã€docker ä¸­ä½¿ç”¨pm2
 CMD ["pm2-runtime", "app.js"]
 
 
-56¡¢docker COPY ADD ¶¼ÊÇ¿ÉÒÔ¸´ÖÆÎÄ¼ş¼ĞµÄ
+56ã€docker COPY ADD éƒ½æ˜¯å¯ä»¥å¤åˆ¶æ–‡ä»¶å¤¹çš„
 
-57¡¢ docker run -it -v /path: /path ¹ÒÔØ£¨Ä¬ÈÏ¸ùÄ¿Â¼£¬ËùÒÔÊ¹ÓÃ¾ø¶ÔÂ·¾¶ £©
-
-
-58¡¢¹ÒÔØµÄÎÄ¼şÔÚdockerÀïÃæÉ¾³ı£¬Íâ²¿µÄÎÄ¼şÒ²»á±»É¾³ı
+57ã€ docker run -it -v /path: /path æŒ‚è½½ï¼ˆé»˜è®¤æ ¹ç›®å½•ï¼Œæ‰€ä»¥ä½¿ç”¨ç»å¯¹è·¯å¾„ ï¼‰
 
 
+58ã€æŒ‚è½½çš„æ–‡ä»¶åœ¨dockeré‡Œé¢åˆ é™¤ï¼Œå¤–éƒ¨çš„æ–‡ä»¶ä¹Ÿä¼šè¢«åˆ é™¤
 
-59¡¢docker ËÑÑ¡¾µÏñ
+
+
+59ã€docker æœé€‰é•œåƒ
 $ docker search mongo
-$ docker pull mongo  À­È¡¾µÏñ
+$ docker pull mongo  æ‹‰å–é•œåƒ
 
-60¡¢docker ²é¿´ÈÕÖ¾
-$ docker logs -f -t --since="2018-02-08" --tail=100 CONTAINER_ID  ²é¿´Ö¸¶¨Ê±¼äºóµÄÈÕÖ¾£¬Ö»ÏÔÊ¾×îºó100ĞĞ£º
+60ã€docker æŸ¥çœ‹æ—¥å¿—
+$ docker logs -f -t --since="2018-02-08" --tail=100 CONTAINER_ID  æŸ¥çœ‹æŒ‡å®šæ—¶é—´åçš„æ—¥å¿—ï¼Œåªæ˜¾ç¤ºæœ€å100è¡Œï¼š
 
-61¡¢docker Æô¶¯¡¢Í£Ö¹ËùÓĞÈİÆ÷
+61ã€docker å¯åŠ¨ã€åœæ­¢æ‰€æœ‰å®¹å™¨
 $ docker start|stop $(docker ps -a | awk '{ print $1}' | tail -n +2)
 
-62¡¢dockerÖØÃüÃû¾µÏñ
-$ docker tag IMAGEID(¾µÏñid) REPOSITORY:TAG£¨²Ö¿â£º±êÇ©£©
+62ã€dockeré‡å‘½åé•œåƒ
+$ docker tag IMAGEID(é•œåƒid) REPOSITORY:TAGï¼ˆä»“åº“ï¼šæ ‡ç­¾ï¼‰
   

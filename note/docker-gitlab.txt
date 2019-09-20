@@ -1,25 +1,23 @@
 docker pull gitlab/gitlab-ce
 
-1¡¢
+1ã€
 docker run --name gitlab -p 8443:443 -p 8090:80 -p 2222:22 -v $PWD/config:/etc/gitlab/ -v $PWD/logs:/var/log/gitlab -v $PWD/data:/var/opt/gitlab -d gitlab/gitlab-ce
 
-·ÃÎÊlocalhost:8090
+è®¿é—®localhost:8090
 
-³õ´ÎÉèÖÃroot ÃÜÂë£¬È»ºóµÇÂ½
+åˆæ¬¡è®¾ç½®root å¯†ç ï¼Œç„¶åç™»é™†
 
 
-2¡¢
-vim $PWD/config/gitlab-rails/etc/gitlab.yml ĞŞ¸ÄÏîÄ¿ÓòÃû¶Ë¿ÚÖ¸ÏòÓ³ÉäµÄ¶Ë¿Ú
+2ã€
+vim $PWD/config/gitlab-rails/etc/gitlab.yml ä¿®æ”¹é¡¹ç›®åŸŸåç«¯å£æŒ‡å‘æ˜ å°„çš„ç«¯å£
 
 gitlab
   host localhost/ip
   port 8090
   https false
 
-3. docker exec -it gitlab /bin/bash ÖØĞÂÆô¶¯gitlab
+3. docker exec -it gitlab /bin/bash é‡æ–°å¯åŠ¨gitlab
 
 docker-ctl restart
 
 4. localshot:8090
-
-

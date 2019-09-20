@@ -1,37 +1,37 @@
 {
     "apps": {
-        "name": "wuwu",                             // ÏîÄ¿Ãû          
-        "script": "./bin/www",                      // Ö´ĞĞÎÄ¼ş
-        "cwd": "./",                                // ¸ùÄ¿Â¼
-        "args": "",                                 // ´«µİ¸ø½Å±¾µÄ²ÎÊı
-        "interpreter": "",                          // Ö¸¶¨µÄ½Å±¾½âÊÍÆ÷
-        "interpreter_args": "",                     // ´«µİ¸ø½âÊÍÆ÷µÄ²ÎÊı
-        "watch": true,                              // ÊÇ·ñ¼àÌıÎÄ¼ş±ä¶¯È»ºóÖØÆô
-        "ignore_watch": [                           // ²»ÓÃ¼àÌıµÄÎÄ¼ş
+        "name": "wuwu",                             // é¡¹ç›®å          
+        "script": "./bin/www",                      // æ‰§è¡Œæ–‡ä»¶
+        "cwd": "./",                                // æ ¹ç›®å½•
+        "args": "",                                 // ä¼ é€’ç»™è„šæœ¬çš„å‚æ•°
+        "interpreter": "",                          // æŒ‡å®šçš„è„šæœ¬è§£é‡Šå™¨
+        "interpreter_args": "",                     // ä¼ é€’ç»™è§£é‡Šå™¨çš„å‚æ•°
+        "watch": true,                              // æ˜¯å¦ç›‘å¬æ–‡ä»¶å˜åŠ¨ç„¶åé‡å¯
+        "ignore_watch": [                           // ä¸ç”¨ç›‘å¬çš„æ–‡ä»¶
             "node_modules",
             "logs"
         ],
-        "exec_mode": "cluster_mode",                // Ó¦ÓÃÆô¶¯Ä£Ê½£¬Ö§³ÖforkºÍclusterÄ£Ê½
-        "instances": 4,                             // Ó¦ÓÃÆô¶¯ÊµÀı¸öÊı£¬½öÔÚclusterÄ£Ê½ÓĞĞ§ Ä¬ÈÏÎªfork£»»òÕß max
-        "max_memory_restart": 8,                    // ×î´óÄÚ´æÏŞÖÆÊı£¬³¬³ö×Ô¶¯ÖØÆô
-        "error_file": "./logs/app-err.log",         // ´íÎóÈÕÖ¾ÎÄ¼ş
-        "out_file": "./logs/app-out.log",           // Õı³£ÈÕÖ¾ÎÄ¼ş
-        "merge_logs": true,                         // ÉèÖÃ×·¼ÓÈÕÖ¾¶ø²»ÊÇĞÂ½¨ÈÕÖ¾
-        "log_date_format": "YYYY-MM-DD HH:mm:ss",   // Ö¸¶¨ÈÕÖ¾ÎÄ¼şµÄÊ±¼ä¸ñÊ½
-        "min_uptime": "60s",                        // Ó¦ÓÃÔËĞĞÉÙÓÚÊ±¼ä±»ÈÏÎªÊÇÒì³£Æô¶¯
-        "max_restarts": 30,                         // ×î´óÒì³£ÖØÆô´ÎÊı£¬¼´Ğ¡ÓÚmin_uptimeÔËĞĞÊ±¼äÖØÆô´ÎÊı£»
-        "autorestart": true,                        // Ä¬ÈÏÎªtrue, ·¢ÉúÒì³£µÄÇé¿öÏÂ×Ô¶¯ÖØÆô
-        "cron_restart": "",                         // crontabÊ±¼ä¸ñÊ½ÖØÆôÓ¦ÓÃ£¬Ä¿Ç°Ö»Ö§³ÖclusterÄ£Ê½;
-        "restart_delay": "60s"                      // Òì³£ÖØÆôÇé¿öÏÂ£¬ÑÓÊ±ÖØÆôÊ±¼ä
+        "exec_mode": "cluster_mode",                // åº”ç”¨å¯åŠ¨æ¨¡å¼ï¼Œæ”¯æŒforkå’Œclusteræ¨¡å¼
+        "instances": 4,                             // åº”ç”¨å¯åŠ¨å®ä¾‹ä¸ªæ•°ï¼Œä»…åœ¨clusteræ¨¡å¼æœ‰æ•ˆ é»˜è®¤ä¸ºforkï¼›æˆ–è€… max
+        "max_memory_restart": 8,                    // æœ€å¤§å†…å­˜é™åˆ¶æ•°ï¼Œè¶…å‡ºè‡ªåŠ¨é‡å¯
+        "error_file": "./logs/app-err.log",         // é”™è¯¯æ—¥å¿—æ–‡ä»¶
+        "out_file": "./logs/app-out.log",           // æ­£å¸¸æ—¥å¿—æ–‡ä»¶
+        "merge_logs": true,                         // è®¾ç½®è¿½åŠ æ—¥å¿—è€Œä¸æ˜¯æ–°å»ºæ—¥å¿—
+        "log_date_format": "YYYY-MM-DD HH:mm:ss",   // æŒ‡å®šæ—¥å¿—æ–‡ä»¶çš„æ—¶é—´æ ¼å¼
+        "min_uptime": "60s",                        // åº”ç”¨è¿è¡Œå°‘äºæ—¶é—´è¢«è®¤ä¸ºæ˜¯å¼‚å¸¸å¯åŠ¨
+        "max_restarts": 30,                         // æœ€å¤§å¼‚å¸¸é‡å¯æ¬¡æ•°ï¼Œå³å°äºmin_uptimeè¿è¡Œæ—¶é—´é‡å¯æ¬¡æ•°ï¼›
+        "autorestart": true,                        // é»˜è®¤ä¸ºtrue, å‘ç”Ÿå¼‚å¸¸çš„æƒ…å†µä¸‹è‡ªåŠ¨é‡å¯
+        "cron_restart": "",                         // crontabæ—¶é—´æ ¼å¼é‡å¯åº”ç”¨ï¼Œç›®å‰åªæ”¯æŒclusteræ¨¡å¼;
+        "restart_delay": "60s"                      // å¼‚å¸¸é‡å¯æƒ…å†µä¸‹ï¼Œå»¶æ—¶é‡å¯æ—¶é—´
         "env": {
-           "NODE_ENV": "production",                // »·¾³²ÎÊı£¬µ±Ç°Ö¸¶¨ÎªÉú²ú»·¾³ process.env.NODE_ENV
-           "REMOTE_ADDR": "°®ÉÏ´óÉùµØ"               // process.env.REMOTE_ADDR
+           "NODE_ENV": "production",                // ç¯å¢ƒå‚æ•°ï¼Œå½“å‰æŒ‡å®šä¸ºç”Ÿäº§ç¯å¢ƒ process.env.NODE_ENV
+           "REMOTE_ADDR": "çˆ±ä¸Šå¤§å£°åœ°"               // process.env.REMOTE_ADDR
         },
         "env_dev": {
-            "NODE_ENV": "development",              // »·¾³²ÎÊı£¬µ±Ç°Ö¸¶¨Îª¿ª·¢»·¾³ pm2 start app.js --env_dev
+            "NODE_ENV": "development",              // ç¯å¢ƒå‚æ•°ï¼Œå½“å‰æŒ‡å®šä¸ºå¼€å‘ç¯å¢ƒ pm2 start app.js --env_dev
             "REMOTE_ADDR": ""
         },
-        "env_test": {                               // »·¾³²ÎÊı£¬µ±Ç°Ö¸¶¨Îª²âÊÔ»·¾³ pm2 start app.js --env_test
+        "env_test": {                               // ç¯å¢ƒå‚æ•°ï¼Œå½“å‰æŒ‡å®šä¸ºæµ‹è¯•ç¯å¢ƒ pm2 start app.js --env_test
             "NODE_ENV": "test",
             "REMOTE_ADDR": ""
         }

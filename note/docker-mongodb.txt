@@ -1,61 +1,61 @@
-1¡¢À­È¡¾µÏñ
+1ã€æ‹‰å–é•œåƒ
 $ docker search mongo
 
-2¡¢´´½¨mongodbÄ¿Â¼
+2ã€åˆ›å»ºmongodbç›®å½•
 mkdir -p mongodb ~/mongodb/db
 
-3¡¢ÔËĞĞ¾µÏñ
+3ã€è¿è¡Œé•œåƒ
 docker run  
 --name mongodb -p 27017:27017  
 -v $PWD/configdb:/data/configdb/ 
 -v $PWD/db/:/data/db/ 
--d mongo --auth£¨±íÊ¾¿ªÆôÕË»§ÑéÖ¤£©
+-d mongo --authï¼ˆè¡¨ç¤ºå¼€å¯è´¦æˆ·éªŒè¯ï¼‰
 
-4¡¢ÒÑadminÉí·İ½øÈëmongo£¨³õÊ¼Ã»ÃÜÂë£©
+4ã€å·²adminèº«ä»½è¿›å…¥mongoï¼ˆåˆå§‹æ²¡å¯†ç ï¼‰
 docker exec -it  containId mongo admin
 
-5¡¢´´½¨Ò»¸ö admin ¹ÜÀíÔ±ÕËºÅ£º
+5ã€åˆ›å»ºä¸€ä¸ª admin ç®¡ç†å‘˜è´¦å·ï¼š
 
 $ use admin
-$ db.createUser({ user: 'admin', pwd: '123456', roles: [ { role: "root", db: "admin" } ] }); // ÉèÖÃÃÜÂë£¬È¨ÏŞ
+$ db.createUser({ user: 'admin', pwd: '123456', roles: [ { role: "root", db: "admin" } ] }); // è®¾ç½®å¯†ç ï¼Œæƒé™
 
 $ use user
-$ db.createUser({user: "user", pwd: "123456", roles: [{ role: "readWrite", db: "user" }]});  // ×¢ÒâÓĞµÄ½ÇÉ«È¨ÏŞÖ»ÄÜÊÊÓÃÓÚÖ¸¶¨Êı¾İ¿â£¬ÀıÈç adminÊı¾İ¿â
+$ db.createUser({user: "user", pwd: "123456", roles: [{ role: "readWrite", db: "user" }]});  // æ³¨æ„æœ‰çš„è§’è‰²æƒé™åªèƒ½é€‚ç”¨äºæŒ‡å®šæ•°æ®åº“ï¼Œä¾‹å¦‚ adminæ•°æ®åº“
 
-$ exit // ÍË³öÖØµÇ
+$ exit // é€€å‡ºé‡ç™»
 $ docker exec -it  containId mongo admin
-$ db.auth("admin","123456"); // ½øÈëºó£¬½øĞĞÉí·İÑéÖ¤£¬ÊÇ·ñÓĞÈ¨ÏŞ½øĞĞÏÂÃæµÄ²Ù×÷
+$ db.auth("admin","123456"); // è¿›å…¥åï¼Œè¿›è¡Œèº«ä»½éªŒè¯ï¼Œæ˜¯å¦æœ‰æƒé™è¿›è¡Œä¸‹é¢çš„æ“ä½œ
 
 
-6¡¢¸ü¸ÄÕË»§ÃÜÂë
+6ã€æ›´æ”¹è´¦æˆ·å¯†ç 
 $ db.changeUserPassword('tank2','test'); 
 
-7¡¢°²×°mongo-express Í¬ÉÏ
+7ã€å®‰è£…mongo-express åŒä¸Š
 
-8¡¢ÔËĞĞmongo-express  £¨ÌØ±ğ×¢Òâ£¬hubÉÏÃæµÄmongo-express ÅäÖÃÀïÃæÄ¬ÈÏmongodb ÈİÆ÷Ãû³ÆÊÇ mongo ,ËùÒÔÉèÖÃ±ğÃû mongodb:mongo£©
+8ã€è¿è¡Œmongo-express  ï¼ˆç‰¹åˆ«æ³¨æ„ï¼Œhubä¸Šé¢çš„mongo-express é…ç½®é‡Œé¢é»˜è®¤mongodb å®¹å™¨åç§°æ˜¯ mongo ,æ‰€ä»¥è®¾ç½®åˆ«å mongodb:mongoï¼‰
 docker run -it --rm --restart=always --name mongo-express --link mongodb:mongo -d -p 8081:8081 -e ME_CONFIG_BASICAUTH_USERNAME="admin" -e ME_CONFIG_BASICAUTH_PASSWORD="123456" -e ME_CONFIG_MONGODB_ADMINUSERNAME="admin" -e ME_CONFIG_MONGODB_ADMINPASSWORD="123456" mongo-express
 
-9¡¢mongodb Ä¬ÈÏÈı¸öÊı¾İ¿â£¬ admin,local,config
+9ã€mongodb é»˜è®¤ä¸‰ä¸ªæ•°æ®åº“ï¼Œ admin,local,config
 
-10¡¢´´½¨Êı¾İ¿â(users)
+10ã€åˆ›å»ºæ•°æ®åº“(users)
 $ use user;
-$ db.user.insert({"name":"²ËÄñ½Ì³Ì"});
+$ db.user.insert({"name":"èœé¸Ÿæ•™ç¨‹"});
 $ show dbs;
 
 
-11¡¢ÈçºÎÉ¾³ımongoÈİÆ÷£¬ÔÙ´´½¨ÈİÆ÷£¬Êı¾İÈÔÈ»¿ÉÒÔ±£Áô¡£
+11ã€å¦‚ä½•åˆ é™¤mongoå®¹å™¨ï¼Œå†åˆ›å»ºå®¹å™¨ï¼Œæ•°æ®ä»ç„¶å¯ä»¥ä¿ç•™ã€‚
 
-12¡¢Ã¿Ò»¸öÊı¾İ¿â¶¼ÓĞÆäÊÚÈ¨ÓÃ»§²ÅÄÜ·ÃÎÊ²Ù×÷£¬Ã»ÓĞ¾Í´´½¨Ò»¸ö
+12ã€æ¯ä¸€ä¸ªæ•°æ®åº“éƒ½æœ‰å…¶æˆæƒç”¨æˆ·æ‰èƒ½è®¿é—®æ“ä½œï¼Œæ²¡æœ‰å°±åˆ›å»ºä¸€ä¸ª
 
-13¡¢³£ÓÃÃüÁî
-show dbs # ²é¿´Êı¾İ¿âÁĞ±í
-use yourdb # ½øÈëÊı¾İ¿â
-show collections # ²é¿´µ±Ç°Êı¾İ¿âÏÂËùÓĞ¼¯ºÏ
-db.yourcollection.distinct("url") # µÃµ½url×Ö¶Î²»ÖØ¸´µÄurlÁĞ±í
-db.yourcollection.distinct("url") # Í³¼Æurl×Ö¶Î²»ÖØ¸´µÄÊı¾İÁ¿
-db.yourcollection.remove({"key":"value"}) # É¾³ı·ûºÏ¸ÃÌõ¼şµÄËùÓĞÊı¾İ£¬É¾³ıºóÎŞ·¨»Ö¸´¡¢³·»Ø
-db.yourcollection.drop() # É¾³ı¼¯ºÏ
-db.dropDatabase() # É¾³ıÊı¾İ¿â
+13ã€å¸¸ç”¨å‘½ä»¤
+show dbs # æŸ¥çœ‹æ•°æ®åº“åˆ—è¡¨
+use yourdb # è¿›å…¥æ•°æ®åº“
+show collections # æŸ¥çœ‹å½“å‰æ•°æ®åº“ä¸‹æ‰€æœ‰é›†åˆ
+db.yourcollection.distinct("url") # å¾—åˆ°urlå­—æ®µä¸é‡å¤çš„urlåˆ—è¡¨
+db.yourcollection.distinct("url") # ç»Ÿè®¡urlå­—æ®µä¸é‡å¤çš„æ•°æ®é‡
+db.yourcollection.remove({"key":"value"}) # åˆ é™¤ç¬¦åˆè¯¥æ¡ä»¶çš„æ‰€æœ‰æ•°æ®ï¼Œåˆ é™¤åæ— æ³•æ¢å¤ã€æ’¤å›
+db.yourcollection.drop() # åˆ é™¤é›†åˆ
+db.dropDatabase() # åˆ é™¤æ•°æ®åº“
 db.yourcollection.insert({"url":"http://blog.csdn.net/qq_23926575/article/category/7428558", "name":"MoonBreeze", "blog_num":30})
-db.yourcollection.update({"name":"MoonBreeze"},{"$set":{"blog_num":35}}) # ¸üĞÂÊı¾İ£¬Ê×ÏÈ²éÕÒname×Ö¶ÎÎªMoonBreezeµÄÊı¾İ£¬È»ºó¸ü¸Äblog_num×Ö¶ÎµÄÖµ¡£
-#¸üĞÂºóµÄÊı¾İÎª{"url":"http://blog.csdn.net/qq_23926575/article/category/7428558", "name":"MoonBreeze", "blog_num":35
+db.yourcollection.update({"name":"MoonBreeze"},{"$set":{"blog_num":35}}) # æ›´æ–°æ•°æ®ï¼Œé¦–å…ˆæŸ¥æ‰¾nameå­—æ®µä¸ºMoonBreezeçš„æ•°æ®ï¼Œç„¶åæ›´æ”¹blog_numå­—æ®µçš„å€¼ã€‚
+#æ›´æ–°åçš„æ•°æ®ä¸º{"url":"http://blog.csdn.net/qq_23926575/article/category/7428558", "name":"MoonBreeze", "blog_num":35
