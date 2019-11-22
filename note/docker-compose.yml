@@ -1,0 +1,10 @@
+version: '2.0'
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ~/workspace/docker/nginx/www:/usr/share/nginx/html
+      - ~/workspace/docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ~/workspace/docker/nginx/logs:/var/log/nginx
